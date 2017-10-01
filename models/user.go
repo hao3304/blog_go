@@ -6,7 +6,7 @@ import (
 
 type User struct {
 	Id int `orm:"pk;auto"`
-	UserName string
+	UserName string `orm:"unique"`
 	Password string
 	Roles []*Role `orm:"rel(m2m)"`
 	Base
