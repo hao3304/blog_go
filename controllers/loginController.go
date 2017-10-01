@@ -11,10 +11,6 @@ type LoginController struct {
 	BaseController
 }
 
-type Auth struct {
-	Token string
-	Expires int64
-}
 
 func (this *LoginController) Post() {
 	o := orm.NewOrm()
@@ -30,7 +26,10 @@ func (this *LoginController) Post() {
 	if err==nil {
 		if user.Password == inputs.Password {
 			t, expires := util.GenToken(&user)
-			token := Auth{
+			token := struct{
+				Token string
+				Expires int64
+			}{
 				Token:t,
 				Expires:expires,
 			}

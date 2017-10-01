@@ -30,3 +30,7 @@ func (this *BaseController)Fail(msg string,code int)  {
 	this.Data["json"] = &rep
 	this.ServeJSON()
 }
+
+func (this *BaseController)CheckToken(token string)  {
+
+}
